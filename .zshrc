@@ -134,7 +134,6 @@ alias gck="git checkout"
 #alias hl='heroku logs --tail'
 
 #MongoDB
-#alias mct='mongo "mongodb+srv://sandbox.mfxdi.mongodb.net/admin" --username m001-student  --password m001-mongodb-basics'
 #alias sdbs='show dbs'
 # alias scll='show collections'
 
