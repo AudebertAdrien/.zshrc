@@ -99,14 +99,23 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
+
+# GENERAL
 alias Uupdate="sudo apt update && sudo apt upgrade -y"
 alias Uclean="sudo apt autoremove -y && sudo apt clean"
+alias hy="history"
 alias v="nvim"
 alias gzsh="vim ~/.zshrc"
 alias uzsh="source ~/.zshrc"
 alias gtmux="vim ~/.tmux.conf"
 alias utmux="tmux source-file ~/.tmux.conf"
+alias awifi="nmcli dev wifi list"
 
+catclip() {
+  cat "$1" | xclip -selection clipboard
+}
+
+# GIT
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
@@ -118,6 +127,7 @@ alias gpull="git pull"
 alias glog="git log"
 alias gr="git remote -v"
 
+# DOCKER
 alias dhelp="docker --help"
 alias dlog="docker logs"
 alias dinsp="docker inspect"
@@ -132,11 +142,26 @@ alias dst="docker stop"
 alias dexec="docker exec -it"
 alias dprune="docker system prune -a"
 alias dlog="docker logs -f"
-alias dv="docker volume ls"
+alias dv="docker volume"
 alias dn="docker network ls"
+alias dni="docker network inspect"
 
-if [[ -z "$TMUX" ]]; then tmux new-session; fi
+#Vagrant 
+alias vu="vagrant up"
+alias vh="vagrant halt"
+alias vd="vagrant destroy"
+alias vs="vagrant status"
+alias vgs="vagrant global-status"
+alias vr="vagrant reload"
+alias vbl="vagrant box list"
 
+export ZSH_COMPDUMP=$PWD/.zcomdump_d/.zcompdump-$HOST
+
+if [[ -z "$TMUX" ]]; then
+    exec tmux new-session -A -s default
+fi
+
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
